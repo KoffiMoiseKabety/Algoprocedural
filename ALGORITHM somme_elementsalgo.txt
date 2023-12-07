@@ -1,0 +1,50 @@
+ALGORITHM somme_elements
+VAR
+ E1 : ARRAY_OF INTEGER [i1];
+ E2 : ARRAY_OF INTEGER [j1];
+ somme := 0;
+
+  BEGIN
+
+  Write("Entrez les elements de l'ensemble 1");
+  Read(E1);
+  Write("Entrez les elements de l'ensemble 2");
+  Read(E2);
+
+  Write("Initialiser somme à 0");
+  somme := 0;
+  FOR i FROM i1 TO E1  DO
+    IF (E1!=E2) THEN
+        somme := somme + i1;
+    END_IF
+  END_FOR
+  FOR j FROM j1 TO E2 DO
+    IF (j1!=E1) THEN
+        somme := somme + j1
+    END_IF
+  END_FOR
+    Write("La somme des éléments distincts des ensembles est : ", + somme)
+  END
+
+ALGORITHM voyelle
+VAR
+ mots := INTEGER;
+ voy := INTEGER;
+ carac := STRING;
+ phrase := STRING;
+BEGIN
+ Write("Entrez une phrase terminée par un point :");
+ Read(phrase);
+ mots :=0;
+ voy :=0;
+ FOR i=0 FROM carac TO phrase  DO
+    IF (carac:=" ") THEN
+        mots := mots + 1;
+    ELSE IF (carac:='aeiouy') THEN
+        voy := voy + 1;
+    END_IF
+ END_FOR
+ mots := mots + 1;
+ Write("Nombre de mots dans la phrase : ", mots);
+ Write("Nombre de voyelles dans la phrase : ", voyelles);
+ END
