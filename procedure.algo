@@ -1,0 +1,73 @@
+ALGORITHM 
+
+    FUNCTION remplir( tab1  : ARRAY_OF INTEGER[15]):ARRAY_OF INTEGER;
+   
+    BEGIN
+      FOR i=0 FROM 1 TO tab1.length-1 STEP 1  DO
+        Write("Entrée une valeur",i+1);
+        Read(tab1[i]);
+      END_FOR
+    RETURN tab1;
+    END
+
+   FUNCTION tri(tab1 : ARRAY_OF INTEGER [15] ) : ARRAY_OF INTEGER ;
+   VAR
+    i,j, n : INTEGER;
+    verf : BOOLEAN;
+   BEGIN
+   n : = tab1.length;
+    FOR j = 0 FROM 0 TO n-1 STEP 1  DO
+      verf:= false;
+    FOR i = 0 FROM 1 TO 15 STEP 1  DO
+      IF (tab1[i]> tab1[i+1]) THEN
+        swap(tab1[i] > tab1[i+1]);
+        verf : true ;
+      END_IF
+    END_FOR
+    RETURN tab1 ;
+   END
+   FUNCTION rechbin(tab1: ARRAY_OF INTEGER, left,right,middle,x:INTEGER) : INTEGER;
+   BEGIN
+    WHILE (left <= right) DO
+      m = left + (right-left)/2;
+       //on verifie si x est présent dans le millieu de la plage du tableau  
+      IF (tab1[middle] == x) THEN
+        RETURN middle;
+      ELSE 
+       // on verife si X est plus grand afin d'ignorer le coté gauche
+      IF (tab1[middle] < x) THEN
+        left = middle + 1;
+      ELSE
+       //  si X est plus peti afin d'ignorer le coté droit
+        right = middle - 1;
+      END_IF
+    END_WHILE
+    //Si apres la recherche et que l'element n'est pas present
+    RETURN -1 ;
+   END
+
+
+VAR
+  tab1 : ARRAY_OF INTEGER;
+  resultat,x,n : INTEGER; 
+BEGIN
+//appel de la fonction remplir pour renseigner le tableau de 15 valeurs
+  tab1:= remplir();
+//Appel de la fonction tri pour trier le tableau en ordre croissant
+  tri(tab1);
+// Recuperation de la taille du tableau trié
+  n:=length(tab1);
+  Write("Affichage du tableau trié");
+  Write(tab1);
+  x:=15;
+//Appel de la fonction rechbin
+  resultat :=rechbin(tab1,0,n - 1,x);
+  IF (resultat == -1) THEN
+    Write("L'element n'est pas présent dans le tableau");
+  ELSE
+    Write("L'element est present dans le tableau");
+  END_IF
+
+
+  END_FOR
+END
